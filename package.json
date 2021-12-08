@@ -1,0 +1,51 @@
+{
+    "name": "smartstart",
+    "version": "1.0.0",
+    "description": "Smart start demo landing page",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kvavilov812/smartstart.git"
+    },
+    "keywords": [
+        "uber",
+        "bootstrap",
+        "html"
+    ],
+    "author": "Konstantin",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kvavilov812/smartstart/issues"
+    },
+    "homepage": "https://github.com/kvavilov812/smartstart#readme",
+    "devDependencies": {
+        "browser-sync": "^2.27.5",
+        "del": "^6.0.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-cli": "^2.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-csso": "^4.0.1",
+        "gulp-file-include": "^2.3.0",
+        "gulp-include": "^2.4.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.0.0",
+        "gulp-uglify": "^3.0.2",
+        "node-reset-scss": "^1.0.1",
+        "sass": "^1.37.3"
+    },
+    "browserslist": [
+        "last 2 version",
+        "> 1%",
+        "maintained node versions",
+        "not dead"
+    ],
+    "dependencies": {
+        "reset-css": "^5.0.1",
+        "tiny-slider": "^2.9.3"
+    }
+}
