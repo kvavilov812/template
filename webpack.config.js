@@ -1,12 +1,13 @@
-//const path = require('path');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: './src/js/index.js',
     output: {
-        // path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './dist'),
         filename: 'js/index.js',
     },
     module: {
@@ -20,10 +21,21 @@ module.exports = {
                 test: /\.s[ac]ss$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
         ],
     },
     optimization: {
-        minimizer: [new CssMinimizerPlugin()],
+        // minimize: true,
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },
     plugins: [
         new HtmlWebpackPlugin({ template: 'dist/index.html' }),

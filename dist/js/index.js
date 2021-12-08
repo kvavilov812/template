@@ -9,17 +9,6 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/scss/styles.scss":
-/*!******************************!*\
-  !*** ./src/scss/styles.scss ***!
-  \******************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://smartstart/./src/scss/styles.scss?");
-
-/***/ }),
-
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -27,7 +16,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _modules_test__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/test */ \"./src/js/modules/test.js\");\n/* harmony import */ var _modules_test__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_test__WEBPACK_IMPORTED_MODULE_1__);\n// import 'reset-css';\n\n\n\n\n//# sourceURL=webpack://smartstart/./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _modules_test__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/test */ \"./src/js/modules/test.js\");\n/* harmony import */ var _modules_test__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_test__WEBPACK_IMPORTED_MODULE_1__);\n// import 'reset-css';\n\n\n\n//# sourceURL=webpack://smartstart/./src/js/index.js?");
 
 /***/ }),
 
@@ -37,7 +26,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
   \********************************/
 /***/ (function() {
 
-eval("console.log('Hello world!');\n\n\n//# sourceURL=webpack://smartstart/./src/js/modules/test.js?");
+eval("console.log('Hello world!');\n\n//# sourceURL=webpack://smartstart/./src/js/modules/test.js?");
+
+/***/ }),
+
+/***/ "./src/scss/styles.scss":
+/*!******************************!*\
+  !*** ./src/scss/styles.scss ***!
+  \******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://smartstart/./src/scss/styles.scss?");
 
 /***/ })
 

@@ -5,7 +5,7 @@ const del = require('del');
 const csso = require('gulp-csso');
 const cleanCSS = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
-const uglify = require('gulp-uglify');
+// const uglify = require('gulp-uglify');
 const fileinclude = require('gulp-file-include');
 //const rename = require('gulp-rename');
 const webpack = require('webpack-stream');
@@ -23,14 +23,29 @@ function server() {
         },
     });
 
-    watch('src/html/**/**.html', series(html)).on('change', browserSync.reload);
-    watch('src/scss/**/**.scss', series(styles)).on(
+    // watch('src/html/**/**.html', series(html)).on('change', browserSync.reload);
+    // watch('src/scss/**/**.scss', series(styles)).on(
+    //     'change',
+    //     browserSync.reload
+    // );
+    // watch('src/images/**.**', series(images)).on('change', browserSync.reload);
+    // watch('src/fonts/**.**', series(fonts)).on('change', browserSync.reload);
+    // watch('src/js/**/**.js', series(js)).on('change', browserSync.reload);
+
+    watch('src/html/**/**.html', series(wbpack_dev)).on(
+        'change',
+        browserSync.reload
+    );
+    watch('src/scss/**/**.scss', series(wbpack_dev)).on(
         'change',
         browserSync.reload
     );
     watch('src/images/**.**', series(images)).on('change', browserSync.reload);
     watch('src/fonts/**.**', series(fonts)).on('change', browserSync.reload);
-    watch('src/js/**/**.js', series(js)).on('change', browserSync.reload);
+    watch('src/js/**/**.js', series(wbpack_dev)).on(
+        'change',
+        browserSync.reload
+    );
 }
 
 function fonts() {
@@ -76,8 +91,8 @@ function clear() {
     return del('dist');
 }
 
-function wbpack() {
-    webpackConfig.mode = 'development';
+function wbpack(mode) {
+    webpackConfig.mode = mode;
     console.log('HTML2');
     return src('src/html/index.html')
         .pipe(fileinclude({ prefix: '@@', basepath: './src/html/' }))
@@ -86,11 +101,19 @@ function wbpack() {
         .pipe(dest('dist'));
 }
 
+function wbpack_dev() {
+    return wbpack('development');
+}
+
+function wbpack_prod() {
+    return wbpack('production');
+}
+
 // function build() {}
 
-exports.server = series(clear, images, fonts, js, wbpack, server);
-exports.build = series(clear, images, fonts, styles, js, html);
+exports.server = series(clear, images, fonts, wbpack_dev, server);
+exports.build = series(clear, images, fonts, wbpack_prod);
 exports.clear = clear;
 
-exports.default = series(clear, images, fonts, wbpack, server);
+exports.default = series(clear, images, fonts, wbpack_dev, server);
 // exports.html2 = series(clear, wbpack);
