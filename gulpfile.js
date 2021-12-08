@@ -76,7 +76,7 @@ function clear() {
     return del('dist');
 }
 
-function html_webpack() {
+function wbpack() {
     webpackConfig.mode = 'development';
     console.log('HTML2');
     return src('src/html/index.html')
@@ -86,19 +86,11 @@ function html_webpack() {
         .pipe(dest('dist'));
 }
 
-function build() {}
+// function build() {}
 
-exports.server = series(clear, images, fonts, styles, js, html_webpack, server);
+exports.server = series(clear, images, fonts, js, wbpack, server);
 exports.build = series(clear, images, fonts, styles, js, html);
 exports.clear = clear;
 
-exports.default = series(
-    clear,
-    images,
-    fonts,
-    styles,
-    js,
-    html_webpack,
-    server
-);
-exports.html2 = series(clear, html_webpack);
+exports.default = series(clear, images, fonts, wbpack, server);
+// exports.html2 = series(clear, wbpack);
