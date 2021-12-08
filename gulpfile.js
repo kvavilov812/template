@@ -8,6 +8,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 const fileinclude = require('gulp-file-include');
 //const rename = require('gulp-rename');
+const webpack = require('webpack-stream');
+const webpackConfig = require('./webpack.config');
 const concat = require('gulp-concat');
 
 function server() {
@@ -74,10 +76,29 @@ function clear() {
     return del('dist');
 }
 
+function html_webpack() {
+    webpackConfig.mode = 'development';
+    console.log('HTML2');
+    return src('src/html/index.html')
+        .pipe(fileinclude({ prefix: '@@', basepath: './src/html/' }))
+        .pipe(dest('dist'))
+        .pipe(webpack(webpackConfig))
+        .pipe(dest('dist'));
+}
+
 function build() {}
 
-exports.server = series(clear, images, fonts, styles, js, html, server);
+exports.server = series(clear, images, fonts, styles, js, html_webpack, server);
 exports.build = series(clear, images, fonts, styles, js, html);
 exports.clear = clear;
 
-exports.default = series(clear, images, fonts, styles, js, html, server);
+exports.default = series(
+    clear,
+    images,
+    fonts,
+    styles,
+    js,
+    html_webpack,
+    server
+);
+exports.html2 = series(clear, html_webpack);
