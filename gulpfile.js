@@ -23,15 +23,6 @@ function server() {
         },
     });
 
-    // watch('src/html/**/**.html', series(html)).on('change', browserSync.reload);
-    // watch('src/scss/**/**.scss', series(styles)).on(
-    //     'change',
-    //     browserSync.reload
-    // );
-    // watch('src/images/**.**', series(images)).on('change', browserSync.reload);
-    // watch('src/fonts/**.**', series(fonts)).on('change', browserSync.reload);
-    // watch('src/js/**/**.js', series(js)).on('change', browserSync.reload);
-
     watch('src/html/**/**.html', series(wbpack_dev)).on(
         'change',
         browserSync.reload
@@ -40,8 +31,14 @@ function server() {
         'change',
         browserSync.reload
     );
-    watch('src/images/**.**', series(images)).on('change', browserSync.reload);
-    watch('src/fonts/**.**', series(fonts)).on('change', browserSync.reload);
+    watch('src/images/**.**', series(wbpack_dev)).on(
+        'change',
+        browserSync.reload
+    );
+    watch('src/fonts/**.**', series(wbpack_dev)).on(
+        'change',
+        browserSync.reload
+    );
     watch('src/js/**/**.js', series(wbpack_dev)).on(
         'change',
         browserSync.reload
@@ -115,5 +112,5 @@ exports.server = series(clear, images, fonts, wbpack_dev, server);
 exports.build = series(clear, images, fonts, wbpack_prod);
 exports.clear = clear;
 
-exports.default = series(clear, images, fonts, wbpack_dev, server);
+exports.default = series(clear, wbpack_dev, server);
 // exports.html2 = series(clear, wbpack);
